@@ -75,7 +75,7 @@ h3{
 .btn-2{
     margin: 10px 0px;
     height:90px;
-    line-height:90px;
+    /* line-height:90px; */
     width:97%;
     white-space:normal;
     text-align:left;
@@ -97,7 +97,7 @@ h3{
 
 @media (max-width: 991px){
     .btn-2 .btn-title{
-        font-size:20px;
+        font-size:18px;
     }
   } 
 
