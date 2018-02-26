@@ -59,6 +59,7 @@ h3{
     color:#00274c;
     border-radius:10px;
     border: none;
+    transition: all 0.2s ease 0s;
 }
 
 .btn-1 .btn-title{
@@ -83,6 +84,7 @@ h3{
     color:#00274c;
     border-radius:10px;
     border: none;
+    transition: all 0.2s ease 0s;
 }
 
 .btn-2 .btn-title{
