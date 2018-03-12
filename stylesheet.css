@@ -115,7 +115,7 @@ h3{
     color:#f4d9bf;
 }
 
-.btn-closed .btn-status, .btn-closed .btn-nexthours{
+.btn-closed .btn-nexthours{
     color:#7a8793;
 }
 
@@ -124,7 +124,7 @@ h3{
 }
 
 .btn-status-closed{
-    color:rgb(134, 2, 2);
+    color:rgb(112, 38, 38);
 }
 
   @media (max-width: 767px){
