@@ -123,6 +123,10 @@ h3{
     color:green;
 }
 
+.btn-status-closed{
+    color:rgb(134, 2, 2);
+}
+
   @media (max-width: 767px){
     .btn-2 .btn-title{
         font-size:18px;
