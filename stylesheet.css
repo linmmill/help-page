@@ -37,6 +37,10 @@ h3{
     background-color:#00274c;
 }
 
+.answers-now btn{
+    color:grey;
+}
+
 .answers-later{
     background-color:#40658f;
 }
@@ -101,6 +105,22 @@ h3{
     color: #fff;
     background-color: #286090;
     border-color: #204d74;
+}
+
+.btn-closed .btn-title{
+    color:#7a8793;
+}
+
+.btn-closed .fa-comment:before{
+    color:#f4d9bf;
+}
+
+.btn-closed .btn-status, .btn-closed .btn-nexthours{
+    color:#7a8793;
+}
+
+.btn-status-open{
+    color:green;
 }
 
   @media (max-width: 767px){
