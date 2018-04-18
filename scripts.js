@@ -64,8 +64,8 @@ function chatClosed(){
 function hoursOfOperation() {
 
 // // Assign current time to a variable
-// const now = new Date();
-const now = new Date("2018-02-25T20:00:00");
+const now = new Date();
+// const now = new Date("2018-02-25T20:00:00");
 contactStatus = "unknown";
 
 console.log(now);
