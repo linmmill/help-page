@@ -3,8 +3,8 @@ $(document).ready(function(){
     hoursOfOperation();
   });
 
-var phoneHours = ["2pm - 7pm ET","7am - 7pm ET","7am - 7pm ET","7am - 7pm ET","7am - 7pm ET","7am - 7pm ET","10am - 6pm ET"];
-var chatHours = ["Closed","8am - 5pm ET","8am - 5pm ET","8am - 5pm ET","8am - 5pm ET","8am - 5pm ET","Closed"];
+var phoneHours = ["2pm-7pm ET","7am-7pm ET","7am-7pm ET","7am-7pm ET","7am-7pm ET","7am-7pm ET","10am-6pm ET"];
+var chatHours = ["Closed","8am-5pm ET","8am-5pm ET","8am-5pm ET","8am-5pm ET","8am-5pm ET","Closed"];
 var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 function phoneClosed(){
@@ -15,7 +15,7 @@ function phoneClosed(){
     var d = new Date();
     var nextDay = d.getDay()+1;
     var hoursOnDay = phoneHours[nextDay];
-    nextHours = "Next Open: " + days[nextDay] + " " + hoursOnDay;
+    nextHours = "Tomorrow's Hours: " + days[nextDay] + " " + hoursOnDay;
     console.log(nextHours);
     document.getElementById("phoneStatus").innerHTML=phoneStatus;
     document.getElementById("phone-hours").innerHTML=nextHours;
@@ -55,7 +55,7 @@ function chatClosed(){
     var d = new Date();
     var nextDay = d.getDay()+1;
     var hoursOnDay = chatHours[nextDay];
-    nextHours = "Next Open: " + days[nextDay] + " " + hoursOnDay;
+    nextHours = "Tomorrow's Hours: " + days[nextDay] + " " + hoursOnDay;
     console.log(nextHours);
     document.getElementById("chatStatus").innerHTML=chatStatus;
     document.getElementById("chat-hours").innerHTML=nextHours;
@@ -65,7 +65,7 @@ function hoursOfOperation() {
 
 // // Assign current time to a variable
 const now = new Date();
-// const now = new Date("2018-02-25T20:00:00");
+// const now = new Date("2018-04-17T17:00:00");
 contactStatus = "unknown";
 
 console.log(now);

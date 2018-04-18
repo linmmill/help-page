@@ -46,6 +46,10 @@ h3{
 }
 
 
+.btn{
+    padding:12px 6px 6px 6px;
+}
+
 .btn-title{
     font-weight:bold;
 }
@@ -60,7 +64,7 @@ h3{
 
 .btn-1{
     margin:10px 0px; 
-    height:200px;
+    height:210px;
     width:97%;
     white-space:normal;
     background-color:white;
@@ -83,7 +87,7 @@ h3{
 
 .btn-2{
     margin: 10px 0px;
-    height:90px;
+    height:95px;
     /* line-height:90px; */
     width:97%;
     white-space:normal;
