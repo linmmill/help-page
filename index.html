@@ -22,20 +22,20 @@
                 <h3 class="answers-now">GET ANSWERS NOW</h2>
                 <div class="row">
                     <div class="col-sm-6 text-center">
-                        <a href="https://chatsupport.it.umich.edu/" class="btn btn-1 btn-closed white-space">
+                        <a href="https://chatsupport.it.umich.edu/" class="btn btn-1 white-space" id="chat-btn">
                                 <span class="btn-title">Chat with us</span><br><br>
                                 <span class="btn-icon"><i class="fa fa-comment fa-5x"></i></span><br><br>
-                                <span class="btn-status btn-status-closed"><strong>CLOSED</strong></span><br>
-                                <span class="btn-nexthours">Opens Tuesday at 8am ET</span>
+                                <span class="btn-status"><strong><span id="chatStatus"></span></strong></span><br>
+                                <span class="btn-nexthours" id="chat-hours"></span>
                         </a>
                     </div>
                     <div class="col-sm-6 text-center">
-                            <a href="tel:+17347644357" class="btn btn-1 btn-open white-space">
+                            <a href="tel:+17347644357" class="btn btn-1 white-space" id="phone-btn">
                                     <span class="btn-title">Call 734-764-HELP</span><br>
                                     <span class="btn-subtitle">(764-4357)</span><br>
                                     <span class="btn-icon"><i class="fa fa-phone fa-5x"></i></span><br><br>
-                                    <span class="btn-status btn-status-open"><strong>OPEN</strong></span><br>
-                                    <span class="btn-nexthours">Until 7pm ET</span>
+                                    <span class="btn-status"><strong><span id="phoneStatus"></span></strong></span><br>
+                                    <span class="btn-nexthours" id="phone-hours"></span>
                             </a>
                     </div>
                 </div>
@@ -61,6 +61,10 @@
         </div>
     </div>
 </div>
+
+<span id="demo">
+
+</span>
     
 </body>
 </html>

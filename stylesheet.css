@@ -111,7 +111,11 @@ h3{
     color:#7a8793;
 }
 
-.btn-closed .fa-comment:before{
+.btn-closed .btn-subtitle{
+    color:#7a8793;
+}
+
+.btn-closed .fa:before{
     color:#f4d9bf;
 }
 
