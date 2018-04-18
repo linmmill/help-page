@@ -3,7 +3,7 @@ $(document).ready(function(){
     hoursOfOperation();
   });
 
-var phoneHours = ["2pm-7pm ET","7am-7pm ET","7am-7pm ET","7am-7pm ET","7am-7pm ET","7am-7pm ET","10am-6pm ET"];
+var phoneHours = ["2pm-7pm ET","7am-7pm ET","7am-7pm ET","7am-7pm ET","7am-7pm ET","7am-6pm ET","Closed"];
 var chatHours = ["Closed","8am-5pm ET","8am-5pm ET","8am-5pm ET","8am-5pm ET","8am-5pm ET","Closed"];
 var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
@@ -15,7 +15,7 @@ function phoneClosed(){
     var d = new Date();
     var nextDay = d.getDay()+1;
     var hoursOnDay = phoneHours[nextDay];
-    nextHours = "Tomorrow's Hours: " + days[nextDay] + " " + hoursOnDay;
+    nextHours = "Tomorrow (" + days[nextDay] + "): " + hoursOnDay;
     console.log(nextHours);
     document.getElementById("phoneStatus").innerHTML=phoneStatus;
     document.getElementById("phone-hours").innerHTML=nextHours;
@@ -27,7 +27,7 @@ function phoneOpen(){
     $( "#phoneStatus" ).addClass( "btn-status-open" );
     var d = new Date();
     var hoursOnDay = phoneHours[d.getDay()];
-    todayHours = "Today's Hours: " + days[d.getDay()] + " " + hoursOnDay;
+    todayHours = "Today (" + days[d.getDay()] + "): " + hoursOnDay;
     console.log(todayHours);
     document.getElementById("phoneStatus").innerHTML=phoneStatus;
     document.getElementById("phone-hours").innerHTML=todayHours;
@@ -41,7 +41,7 @@ function chatOpen(){
     $( "#chatStatus" ).addClass( "btn-status-open" );
     var d = new Date();
     var hoursOnDay = chatHours[d.getDay()];
-    todayHours = "Today's Hours: " + days[d.getDay()] + " " + hoursOnDay;
+    todayHours = "Today (" + days[d.getDay()] + "): " + hoursOnDay;
     console.log(todayHours);
     document.getElementById("chatStatus").innerHTML=chatStatus;
     document.getElementById("chat-hours").innerHTML=todayHours;
@@ -55,7 +55,7 @@ function chatClosed(){
     var d = new Date();
     var nextDay = d.getDay()+1;
     var hoursOnDay = chatHours[nextDay];
-    nextHours = "Tomorrow's Hours: " + days[nextDay] + " " + hoursOnDay;
+    nextHours = "Tomorrow (" + days[nextDay] + "): " + hoursOnDay;
     console.log(nextHours);
     document.getElementById("chatStatus").innerHTML=chatStatus;
     document.getElementById("chat-hours").innerHTML=nextHours;
