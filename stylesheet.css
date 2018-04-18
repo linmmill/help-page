@@ -59,7 +59,6 @@ h3{
 }
 
 .btn-nexthours{
-    font-style:italic;
 }
 
 .btn-1{
@@ -142,3 +141,7 @@ h3{
         font-size:18px;
     }
   } 
+
+.phone-today-tomo, .chat-today-tomo{
+    font-weight:bold;
+}
