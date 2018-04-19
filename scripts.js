@@ -1,5 +1,4 @@
 $(document).ready(function(){
-    // we call the function
     hoursOfOperation();
   });
 
@@ -7,53 +6,44 @@ const phoneHours = ["2pm-7pm ET","7am-7pm ET","7am-7pm ET","7am-7pm ET","7am-7pm
 const chatHours = ["Closed","8am-5pm ET","8am-5pm ET","8am-5pm ET","8am-5pm ET","8am-5pm ET","Closed"];
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-function hoursOfOperation() {
+var DateTime = luxon.DateTime;
+var DateTimeEST = DateTime.fromObject({zone: 'America/New_York'});
+var dayEST = DateTimeEST.weekday;
+var hourEST = DateTimeEST.hour;
+console.log("The ET day is " + dayEST + " and the ET hour is " + hourEST);
 
-    // // Assign current time to a variable
-    const now = new Date();
-    // const now = new Date("2018-04-17T17:00:00");
-    contactStatus = "unknown";
-    
-    console.log(now);
-    
-    if (
-        (now.getDay()>0 && now.getDay()<6) &&
-        (now.getUTCHours()>=12 && now.getUTCHours()<21)
-        ){
+
+function hoursOfOperation(){
+
+    if (dayEST>0 && dayEST<6 && hourEST>7 && hourEST<17){
         chatOpen();
-    } else {
+    }
+    else{
         chatClosed();
     }
-    
-    console.log(chatStatus);
-    
-    if (
-        (now.getDay()>0 && now.getDay()<5) &&
-        (now.getUTCHours()>=11 && now.getUTCHours()<23)){
+
+    if (dayEST>0 && dayEST<5 && hourEST>6 && hourEST<19){
         phoneOpen();
-    } else if(now.getDay()===0 && now.getUTCHours()>=18 && now.getUTCHours()<23){
+    }
+    else if (dayEST=5 && hourEST>6 && hourEST<18){
         phoneOpen();
-    } else if(
-        (now.getDay()===5) &&
-        (now.getUTCHours()>=11 && now.getUTCHours()<22)){
-            phoneOpen();
-    } else {
-            phoneClosed();
     }
-    
-    console.log(phoneStatus);
-    
+    else if (dayEST=0 && hourEST>1 && hourEST<19){
+        phoneOpen();
     }
+    else{
+        phoneClosed();
+    }
+}
 
 function phoneClosed(){
     phoneStatus="CLOSED";
     document.getElementById("phoneStatus").innerHTML=phoneStatus;
     $( "#phone-btn" ).addClass( "btn-closed" );
     $( "#phoneStatus" ).addClass( "btn-status-closed" );
-    var d = new Date();
-    var nextDay = d.getDay()+1;
+    var nextDay = dayEST+1;
     var hoursOnDay = phoneHours[nextDay];
-    nextHours = "Tomorrow's Hours: " + days[nextDay] + " " + hoursOnDay;
+    nextHours = "Next Open: " + days[nextDay] + " " + hoursOnDay;
     console.log(nextHours);
     document.getElementById("phoneStatus").innerHTML=phoneStatus;
     document.getElementById("phone-hours").innerHTML=nextHours;
@@ -63,9 +53,8 @@ function phoneOpen(){
     phoneStatus="OPEN";
     $( "#phone-btn" ).addClass( "btn-open" );
     $( "#phoneStatus" ).addClass( "btn-status-open" );
-    var d = new Date();
-    var hoursOnDay = phoneHours[d.getDay()];
-    todayHours = "Today's Hours: " + days[d.getDay()] + " " + hoursOnDay;
+    var hoursOnDay = phoneHours[dayEST];
+    todayHours = "Today's Hours: " + days[dayEST] + " " + hoursOnDay;
     console.log(todayHours);
     document.getElementById("phoneStatus").innerHTML=phoneStatus;
     document.getElementById("phone-hours").innerHTML=todayHours;
@@ -77,9 +66,8 @@ function chatOpen(){
     document.getElementById("chatStatus").innerHTML=chatStatus;
     $( "#chat-btn" ).addClass( "btn-open" );
     $( "#chatStatus" ).addClass( "btn-status-open" );
-    var d = new Date();
-    var hoursOnDay = chatHours[d.getDay()];
-    todayHours = "Today's Hours: " + days[d.getDay()] + " " + hoursOnDay;
+    var hoursOnDay = chatHours[dayEST];
+    todayHours = "Today's Hours: " + days[dayEST] + " " + hoursOnDay;
     console.log(todayHours);
     document.getElementById("chatStatus").innerHTML=chatStatus;
     document.getElementById("chat-hours").innerHTML=todayHours;
@@ -90,14 +78,14 @@ function chatClosed(){
     document.getElementById("chatStatus").innerHTML=chatStatus;
     $( "#chat-btn" ).addClass( "btn-closed" );
     $( "#chatStatus" ).addClass( "btn-status-closed" );
-    var d = new Date();
-    var nextDay = d.getDay()+1;
+    var nextDay = dayEST+1;
     var hoursOnDay = chatHours[nextDay];
-    nextHours = "Tomorrow's Hours: " + days[nextDay] + " " + hoursOnDay;
+    nextHours = "Next Open: " + days[nextDay] + " " + hoursOnDay;
     console.log(nextHours);
     document.getElementById("chatStatus").innerHTML=chatStatus;
     document.getElementById("chat-hours").innerHTML=nextHours;
 };
+
 
 
 
