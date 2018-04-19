@@ -8,6 +8,8 @@ const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", 
 
 var DateTime = luxon.DateTime;
 var DateTimeEST = DateTime.fromObject({zone: 'America/New_York'});
+// Test Closed Text
+// var DateTimeEST =  DateTime.local(2018, 4, 20, 7, 00);
 var dayEST = DateTimeEST.weekday;
 var hourEST = DateTimeEST.hour;
 console.log("The ET day is " + dayEST + " and the ET hour is " + hourEST);
@@ -43,7 +45,7 @@ function phoneClosed(){
     $( "#phoneStatus" ).addClass( "btn-status-closed" );
     var nextDay = dayEST+1;
     var hoursOnDay = phoneHours[nextDay];
-    nextHours = "Next Open: " + days[nextDay] + " " + hoursOnDay;
+    nextHours = "Tomorrow's Hours : " + days[nextDay] + " " + hoursOnDay;
     console.log(nextHours);
     document.getElementById("phoneStatus").innerHTML=phoneStatus;
     document.getElementById("phone-hours").innerHTML=nextHours;
@@ -80,7 +82,7 @@ function chatClosed(){
     $( "#chatStatus" ).addClass( "btn-status-closed" );
     var nextDay = dayEST+1;
     var hoursOnDay = chatHours[nextDay];
-    nextHours = "Next Open: " + days[nextDay] + " " + hoursOnDay;
+    nextHours = "Tomorrow's Hours: " + days[nextDay] + " " + hoursOnDay;
     console.log(nextHours);
     document.getElementById("chatStatus").innerHTML=chatStatus;
     document.getElementById("chat-hours").innerHTML=nextHours;
