@@ -7,25 +7,25 @@ const chatHours = ["8am-5pm ET","8am-5pm ET","8am-5pm ET","8am-5pm ET","8am-5pm 
 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
 var DateTime = luxon.DateTime;
-var DateTimeEST = DateTime.fromObject({zone: 'America/New_York'});
+var DateTimeET = DateTime.fromObject({zone: 'America/New_York'});
 // Test Closed Text
-// var DateTimeEST =  DateTime.local(2018, 4, 22, 15, 00);
-var dayET = DateTimeEST.weekday;
-var hourEST = DateTimeEST.hour;
-console.log("The ET day is " + dayET + " and the ET hour is " + hourEST);
+// var DateTimeET =  DateTime.local(2018, 4, 21, 15, 00);
+var dayET = DateTimeET.weekday;
+var hourET = DateTimeET.hour;
+console.log("The ET day is " + dayET + " and the ET hour is " + hourET);
 
 
 function hoursOfOperation(){
 
-    if (dayET>0 && dayET<6 && hourEST>7 && hourEST<17){
+    if (dayET>0 && dayET<6 && hourET>7 && hourET<17){
         chatOpen();
         todayChatHours();
     }
-    else if (dayET>0 && dayET<6 && hourEST<=7){
+    else if (dayET>0 && dayET<6 && hourET<=7){
         chatClosed();
         todayChatHours();
     }
-    else if (dayET>0 && dayET<6 && hourEST>=17){
+    else if (dayET>0 && dayET<6 && hourET>=17){
         chatClosed();
         tomorrowChatHours();
     }
@@ -34,35 +34,27 @@ function hoursOfOperation(){
         tomorrowChatHours();
     }
 
-    if (dayET>0 && dayET<6 && hourEST>6 && hourEST<19){
+    if (dayET>0 && dayET<6 && hourET>6 && hourET<19){
         phoneOpen();
         todayPhoneHours();
     }
-    else if (dayET>0 && dayET<6 && hourEST<=6){
+    else if (dayET>0 && dayET<6 && hourET<=6){
         phoneClosed();
         todayPhoneHours();
     }
-    else if (dayET>0 && dayET<6 && hourEST>=19){
+    else if (dayET>0 && dayET<6 && hourET>=19){
         phoneClosed();
         tomorrowPhoneHours();
     }
-    else if (dayET===6 && hourEST>6 && hourEST<18){
-        phoneOpen();
-        todayPhoneHours();
-    }
-    else if (dayET===6 && hourEST<=6){
-        phoneClosed();
-        todayPhoneHours();
-    }
-    else if (dayET===6 && hourEST>=18){
+    else if (dayET===6){
         phoneClosed();
         tomorrowPhoneHours();
     }
-    else if (dayET===7 && hourEST>1 && hourEST<19){
+    else if (dayET===7 && hourET>1 && hourET<19){
         phoneOpen();
         todayPhoneHours();
     }
-    else if (dayET===7 && hourEST<=1){
+    else if (dayET===7 && hourET<=1){
         phoneClosed();
         todayPhoneHours();
     }
@@ -74,7 +66,7 @@ function hoursOfOperation(){
 
 
 function tomorrowPhoneHours(){
-    var nextDay = (dayET === 7) ? 1 : dayET;
+    var nextDay = (dayET === 7) ? 1 : dayET+1;
     var hoursOnDay = phoneHours[nextDay-1];
     nextHours = "Tomorrow's Hours: " + days[nextDay-1] + " " + hoursOnDay;
     console.log("Next day is " + nextDay);
@@ -98,7 +90,7 @@ function todayChatHours(){
 }
 
 function tomorrowChatHours(){
-    var nextDay = (dayET ===7) ? 1 : dayET;
+    var nextDay = (dayET ===7) ? 1 : dayET+1;
     var hoursOnDay = chatHours[nextDay-1];
     nextHours = "Tomorrow's Hours: " + days[nextDay-1] + " " + hoursOnDay;
     console.log("Next day is " + nextDay);
