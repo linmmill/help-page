@@ -2,30 +2,30 @@ $(document).ready(function(){
     hoursOfOperation();
   });
 
-const phoneHours = ["2pm-7pm ET","7am-7pm ET","7am-7pm ET","7am-7pm ET","7am-7pm ET","7am-6pm ET","Closed"];
-const chatHours = ["Closed","8am-5pm ET","8am-5pm ET","8am-5pm ET","8am-5pm ET","8am-5pm ET","Closed"];
-const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const phoneHours = ["7am-7pm ET","7am-7pm ET","7am-7pm ET","7am-7pm ET","7am-6pm ET","Closed","2pm-7pm ET"];
+const chatHours = ["8am-5pm ET","8am-5pm ET","8am-5pm ET","8am-5pm ET","8am-5pm ET","Closed","Closed"];
+const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
 var DateTime = luxon.DateTime;
 var DateTimeEST = DateTime.fromObject({zone: 'America/New_York'});
 // Test Closed Text
-// var DateTimeEST =  DateTime.local(2018, 4, 19, 7, 00);
-var dayEST = DateTimeEST.weekday;
+// var DateTimeEST =  DateTime.local(2018, 4, 22, 15, 00);
+var dayET = DateTimeEST.weekday;
 var hourEST = DateTimeEST.hour;
-console.log("The ET day is " + dayEST + " and the ET hour is " + hourEST);
+console.log("The ET day is " + dayET + " and the ET hour is " + hourEST);
 
 
 function hoursOfOperation(){
 
-    if (dayEST>0 && dayEST<6 && hourEST>7 && hourEST<17){
+    if (dayET>0 && dayET<6 && hourEST>7 && hourEST<17){
         chatOpen();
         todayChatHours();
     }
-    else if (dayEST>0 && dayEST<6 && hourEST<=7){
+    else if (dayET>0 && dayET<6 && hourEST<=7){
         chatClosed();
         todayChatHours();
     }
-    else if (dayEST>0 && dayEST<6 && hourEST>=17){
+    else if (dayET>0 && dayET<6 && hourEST>=17){
         chatClosed();
         tomorrowChatHours();
     }
@@ -34,35 +34,35 @@ function hoursOfOperation(){
         tomorrowChatHours();
     }
 
-    if (dayEST>0 && dayEST<5 && hourEST>6 && hourEST<19){
+    if (dayET>0 && dayET<6 && hourEST>6 && hourEST<19){
         phoneOpen();
         todayPhoneHours();
     }
-    else if (dayEST>0 && dayEST<5 && hourEST<=6){
+    else if (dayET>0 && dayET<6 && hourEST<=6){
         phoneClosed();
         todayPhoneHours();
     }
-    else if (dayEST>0 && dayEST<5 && hourEST>=19){
+    else if (dayET>0 && dayET<6 && hourEST>=19){
         phoneClosed();
         tomorrowPhoneHours();
     }
-    else if (dayEST===5 && hourEST>6 && hourEST<18){
+    else if (dayET===6 && hourEST>6 && hourEST<18){
         phoneOpen();
         todayPhoneHours();
     }
-    else if (dayEST===5 && hourEST<=6){
+    else if (dayET===6 && hourEST<=6){
         phoneClosed();
         todayPhoneHours();
     }
-    else if (dayEST===5 && hourEST>=18){
+    else if (dayET===6 && hourEST>=18){
         phoneClosed();
         tomorrowPhoneHours();
     }
-    else if (dayEST===0 && hourEST>1 && hourEST<19){
+    else if (dayET===7 && hourEST>1 && hourEST<19){
         phoneOpen();
         todayPhoneHours();
     }
-    else if (dayEST===0 && hourEST<=1){
+    else if (dayET===7 && hourEST<=1){
         phoneClosed();
         todayPhoneHours();
     }
@@ -74,9 +74,9 @@ function hoursOfOperation(){
 
 
 function tomorrowPhoneHours(){
-    var nextDay = (dayEST > 5) ? 0 : dayEST+1;
-    var hoursOnDay = phoneHours[nextDay];
-    nextHours = "Tomorrow's Hours: " + days[nextDay] + " " + hoursOnDay;
+    var nextDay = (dayET === 7) ? 1 : dayET;
+    var hoursOnDay = phoneHours[nextDay-1];
+    nextHours = "Tomorrow's Hours: " + days[nextDay-1] + " " + hoursOnDay;
     console.log("Next day is " + nextDay);
     console.log(nextHours);
     document.getElementById("phone-hours").innerHTML=nextHours;
@@ -84,23 +84,23 @@ function tomorrowPhoneHours(){
 }
 
 function todayPhoneHours(){
-    var hoursOnDay = phoneHours[dayEST];
-    todayHours = "Today's Hours: " + days[dayEST] + " " + hoursOnDay;
+    var hoursOnDay = phoneHours[dayET-1];
+    todayHours = "Today's Hours: " + days[dayET-1] + " " + hoursOnDay;
     console.log(todayHours);
     document.getElementById("phone-hours").innerHTML=todayHours;
 }
 
 function todayChatHours(){
-    var hoursOnDay = chatHours[dayEST];
-    todayHours = "Today's Hours: " + days[dayEST] + " " + hoursOnDay;
+    var hoursOnDay = chatHours[dayET-1];
+    todayHours = "Today's Hours: " + days[dayET-1] + " " + hoursOnDay;
     console.log(todayHours);
     document.getElementById("chat-hours").innerHTML=todayHours;
 }
 
 function tomorrowChatHours(){
-    var nextDay = (dayEST > 5) ? 0 : dayEST+1;
-    var hoursOnDay = chatHours[nextDay];
-    nextHours = "Tomorrow's Hours: " + days[nextDay] + " " + hoursOnDay;
+    var nextDay = (dayET ===7) ? 1 : dayET;
+    var hoursOnDay = chatHours[nextDay-1];
+    nextHours = "Tomorrow's Hours: " + days[nextDay-1] + " " + hoursOnDay;
     console.log("Next day is " + nextDay);
     console.log(nextHours);
     document.getElementById("chat-hours").innerHTML=nextHours;
