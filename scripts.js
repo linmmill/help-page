@@ -2,18 +2,30 @@ $(document).ready(function(){
     hoursOfOperation();
   });
 
+//Arrays for days and phone/chat hours
+
 const phoneHours = ["7am-7pm ET","7am-7pm ET","7am-7pm ET","7am-7pm ET","7am-6pm ET","Closed","2pm-7pm ET"];
 const chatHours = ["8am-5pm ET","8am-5pm ET","8am-5pm ET","8am-5pm ET","8am-5pm ET","Closed","Closed"];
 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
+
+//Sets alias for DateTime to use luxon
 var DateTime = luxon.DateTime;
+
+//Sets DateTimeET for Eastern time & gets day & hour
 var DateTimeET = DateTime.fromObject({zone: 'America/New_York'});
-// Test Closed Text
-// var DateTimeET =  DateTime.local(2018, 4, 21, 15, 00);
+
+    //Test a different date/time
+    // var DateTimeET =  DateTime.local(2018, 4, 21, 15, 00);
+
 var dayET = DateTimeET.weekday;
 var hourET = DateTimeET.hour;
 console.log("The ET day is " + dayET + " and the ET hour is " + hourET);
 
+//This function determines what styling to give and what hours to display based on the current time in ET.
+    //If open, displays Today's Hours
+    //If closed and PRIOR TO opening hour, display Today's Hours
+    //If closed and AFTER closing hour, display Tomorrow's Hours
 
 function hoursOfOperation(){
 
@@ -65,6 +77,8 @@ function hoursOfOperation(){
 }
 
 
+//Generates today's hours or tomorrow's hours based on logic above
+
 function tomorrowPhoneHours(){
     var nextDay = (dayET === 7) ? 1 : dayET+1;
     var hoursOnDay = phoneHours[nextDay-1];
@@ -97,6 +111,8 @@ function tomorrowChatHours(){
     console.log(nextHours);
     document.getElementById("chat-hours").innerHTML=nextHours;
 }
+
+//Updates css based on open/closed status from logic above
 
 function phoneClosed(){
     phoneStatus="CLOSED";
