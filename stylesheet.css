@@ -24,7 +24,7 @@ body{
     background-color:#a2b6c2;
     padding:0;
     margin:0.625em 0em;
-    height:19em;
+    min-height:19em;
 }
 
 h3{
@@ -64,7 +64,7 @@ h3{
 
 .btn-1{
     margin:0.625em 0em; 
-    height:14em;
+    min-height:14em;
     width:97%;
     white-space:normal;
     background-color:white;
@@ -87,7 +87,7 @@ h3{
 
 .btn-2{
     margin: 0.625em 0em;
-    height:6.375em;
+    min-height:6.375em;
     /* line-height:90px; */
     width:97%;
     white-space:normal;
