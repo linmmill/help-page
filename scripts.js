@@ -1,43 +1,82 @@
 $(document).ready(function(){
-    hoursOfOperation();
+    Date.toTZString();
   });
 
-//Arrays for days and phone/chat hours
+//Variables and arrays for hoursOfOperation() function
 
 const phoneHours = ["7am-7pm ET","7am-7pm ET","7am-7pm ET","7am-7pm ET","7am-6pm ET","Closed","2pm-7pm ET"];
 const chatHours = ["8am-5pm ET","8am-5pm ET","8am-5pm ET","8am-5pm ET","8am-5pm ET","Closed","Closed"];
 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
 
-//Sets alias for DateTime to use luxon
-var DateTime = luxon.DateTime;
+//DETERMINE OPEN/CLOSED STATUS BASED ON UTC > SERVER TIME (COMPATIBLE WITH IE)
 
-//Sets DateTimeET for Eastern time & gets day & hour
-var DateTimeET = DateTime.fromObject({zone: 'America/New_York'});
+Date.toTZString= function(d, tzp) {
+	var short_months= ['January', 'February', 'March', 'April', 'May','June', 'July','August', 'September', 'October', 'November', 'December'];
+	var h, m, pm= 'pm', off, label, str,
+	d= d? new Date(d):new Date();
 
-    //Test a different date/time
-    // var DateTimeET =  DateTime.local(2018, 4, 21, 15, 00);
+	var tz={
+	AK:['Alaska', -540],
+	A:['Atlantic', -240],
+	C:['Central', -360],
+	E:['Eastern', -300],
+	HA:['Hawaii-Aleutian', -600],
+	M:['Mountain', -420],
+	N:['Newfoundland', -210],
+	P:['Pacific', -480]
+	}[tzp.toUpperCase()];
 
-var dayET = DateTimeET.weekday;
-var hourET = DateTimeET.hour;
-console.log("The ET day is " + dayET + " and the ET hour is " + hourET);
+	//get the selected offset from the object:
+	if(!tz) return d.toUTCString();
+	off= tz[1];
 
-//This function determines what styling to give and what hours to display based on the current time in ET.
-    //If open, displays Today's Hours
-    //If closed and PRIOR TO opening hour, display Today's Hours
-    //If closed and AFTER closing hour, display Tomorrow's Hours
+	//get the start and end dates for dst:(these rules are US only)
+	var     y= d.getUTCFullYear(), countstart= 8, countend= 1,
+	dstart= new Date(Date.UTC(y, 2, 8, 2, 0, 0, 0)),
+	dend= new Date(Date.UTC(y, 10, 1, 2, 0, 0, 0));
+	while(dstart.getUTCDay()!== 0) dstart.setUTCDate(++countstart);
+	while(dend.getUTCDay()!== 0) dend.setUTCDate(++countend);
 
-function hoursOfOperation(){
+	//get the GMT time for the localized dst start and end times:
+	dstart.setUTCMinutes(off);
+	dend.setUTCMinutes(off);
 
-    if (dayET>0 && dayET<6 && hourET>7 && hourET<17){
+	// if the date passed in is between dst start and dst end, adjust the offset and label:
+	if(dstart<= d && dend>= d){
+	off+= 60;
+	label= tzp+'dt';
+	}
+	else label= tzp+'st';
+
+	//add the adjusted offset to the date and get the hours and minutes:
+	d.setUTCMinutes(d.getUTCMinutes()+off);
+	h= d.getUTCHours();
+	m= d.getUTCMinutes();
+	if(m<10) m= '0'+m;
+
+	//return a string:
+	var str= short_months[d.getUTCMonth()]+' '+d.getUTCDate()+', '+d.getUTCFullYear()+' ';
+	return str+ h+':'+m;
+}
+
+var st = new Date().toUTCString();
+var date = Date.toTZString(st, 'E');
+var servertime = new Date(date).getHours();
+var serverday = new Date(date).getDay();
+
+console.log("The ET day is " + serverday + " and the ET hour is " + servertime);
+
+
+if (serverday>0 && serverday<6 && servertime>7 && servertime<17){
         chatOpen();
         todayChatHours();
     }
-    else if (dayET>0 && dayET<6 && hourET<=7){
+    else if (serverday>0 && serverday<6 && servertime<=7){
         chatClosed();
         todayChatHours();
     }
-    else if (dayET>0 && dayET<6 && hourET>=17){
+    else if (serverday>0 && serverday<6 && servertime>=17){
         chatClosed();
         tomorrowChatHours();
     }
@@ -46,27 +85,27 @@ function hoursOfOperation(){
         tomorrowChatHours();
     }
 
-    if (dayET>0 && dayET<6 && hourET>6 && hourET<19){
+    if (serverday>0 && serverday<6 && servertime>6 && servertime<19){
         phoneOpen();
         todayPhoneHours();
     }
-    else if (dayET>0 && dayET<6 && hourET<=6){
+    else if (serverday>0 && serverday<6 && servertime<=6){
         phoneClosed();
         todayPhoneHours();
     }
-    else if (dayET>0 && dayET<6 && hourET>=19){
+    else if (serverday>0 && serverday<6 && servertime>=19){
         phoneClosed();
         tomorrowPhoneHours();
     }
-    else if (dayET===6){
+    else if (serverday===6){
         phoneClosed();
         tomorrowPhoneHours();
     }
-    else if (dayET===7 && hourET>1 && hourET<19){
+    else if (serverday===7 && servertime>1 && servertime<19){
         phoneOpen();
         todayPhoneHours();
     }
-    else if (dayET===7 && hourET<=1){
+    else if (serverday===7 && servertime<=1){
         phoneClosed();
         todayPhoneHours();
     }
@@ -74,13 +113,68 @@ function hoursOfOperation(){
         phoneClosed();
         tomorrowPhoneHours();
     }
-}
+
+// //DISPLAY TODAY OR TOMORROW HOURS USING LUXON TIMEZONE (NOT COMPATIBLE WITH IE)
+
+// //This function determines what styling to give and what hours to display based on the current time in ET.
+//     //If open, displays Today's Hours
+//     //If closed and PRIOR TO opening hour, display Today's Hours
+//     //If closed and AFTER closing hour, display Tomorrow's Hours
+
+// function hoursOfOperation(){
+
+//     if (serverday>0 && serverday<6 && servertime>7 && servertime<17){
+//         // chatOpen();
+//         todayChatHours();
+//     }
+//     else if (serverday>0 && serverday<6 && servertime<=7){
+//         // chatClosed();
+//         todayChatHours();
+//     }
+//     else if (serverday>0 && serverday<6 && servertime>=17){
+//         // chatClosed();
+//         tomorrowChatHours();
+//     }
+//     else{
+//         // chatClosed();
+//         tomorrowChatHours();
+//     }
+
+//     if (serverday>0 && serverday<6 && servertime>6 && servertime<19){
+//         // phoneOpen();
+//         todayPhoneHours();
+//     }
+//     else if (serverday>0 && serverday<6 && servertime<=6){
+//         // phoneClosed();
+//         todayPhoneHours();
+//     }
+//     else if (serverday>0 && serverday<6 && servertime>=19){
+//         // phoneClosed();
+//         tomorrowPhoneHours();
+//     }
+//     else if (serverday===6){
+//         // phoneClosed();
+//         tomorrowPhoneHours();
+//     }
+//     else if (serverday===7 && servertime>1 && servertime<19){
+//         // phoneOpen();
+//         todayPhoneHours();
+//     }
+//     else if (serverday===7 && servertime<=1){
+//         // phoneClosed();
+//         todayPhoneHours();
+//     }
+//     else{
+//         // phoneClosed();
+//         tomorrowPhoneHours();
+//     }
+// }
 
 
 //Generates today's hours or tomorrow's hours based on logic above
 
 function tomorrowPhoneHours(){
-    var nextDay = (dayET === 7) ? 1 : dayET+1;
+    var nextDay = (serverday === 7) ? 1 : serverday+1;
     var hoursOnDay = phoneHours[nextDay-1];
     nextHours = "Tomorrow's Hours: " + days[nextDay-1] + " " + hoursOnDay;
     console.log("Next day is " + nextDay);
@@ -90,21 +184,21 @@ function tomorrowPhoneHours(){
 }
 
 function todayPhoneHours(){
-    var hoursOnDay = phoneHours[dayET-1];
-    todayHours = "Today's Hours: " + days[dayET-1] + " " + hoursOnDay;
+    var hoursOnDay = phoneHours[serverday-1];
+    todayHours = "Today's Hours: " + days[serverday-1] + " " + hoursOnDay;
     console.log(todayHours);
     document.getElementById("phone-hours").innerHTML=todayHours;
 }
 
 function todayChatHours(){
-    var hoursOnDay = chatHours[dayET-1];
-    todayHours = "Today's Hours: " + days[dayET-1] + " " + hoursOnDay;
+    var hoursOnDay = chatHours[serverday-1];
+    todayHours = "Today's Hours: " + days[serverday-1] + " " + hoursOnDay;
     console.log(todayHours);
     document.getElementById("chat-hours").innerHTML=todayHours;
 }
 
 function tomorrowChatHours(){
-    var nextDay = (dayET ===7) ? 1 : dayET+1;
+    var nextDay = (serverday ===7) ? 1 : serverday+1;
     var hoursOnDay = chatHours[nextDay-1];
     nextHours = "Tomorrow's Hours: " + days[nextDay-1] + " " + hoursOnDay;
     console.log("Next day is " + nextDay);
@@ -144,6 +238,44 @@ function chatClosed(){
 };
 
 
+function phoneClosed(){
+    phoneStatus="CLOSED";
+    document.getElementById("phoneStatus").innerHTML=phoneStatus;
+    $( "#phone-btn" ).addClass( "btn-closed" );
+    $( "#phoneStatus" ).addClass( "btn-status-closed" );
+};
+
+function phoneOpen(){
+    phoneStatus="OPEN";
+    document.getElementById("phoneStatus").innerHTML=phoneStatus;
+    $( "#phone-btn" ).addClass( "btn-open" );
+    $( "#phoneStatus" ).addClass( "btn-status-open" );
+};
+
+function chatOpen(){
+    chatStatus="OPEN";
+    document.getElementById("chatStatus").innerHTML=chatStatus;
+    $( "#chat-btn" ).addClass( "btn-open" );
+    $( "#chatStatus" ).addClass( "btn-status-open" );
+};
+
+function chatClosed(){
+    chatStatus="CLOSED";
+    document.getElementById("chatStatus").innerHTML=chatStatus;
+    $( "#chat-btn" ).addClass( "btn-closed" );
+    $( "#chatStatus" ).addClass( "btn-status-closed" );
+
+};
+
+///////////////////////////////////////////////////////////////////////////////////
+
+// $('#form-datetime').submit(function () {
+//     DateTimeET = document.getElementById("form-datetime").value;
+//     serverday = DateTimeET.weekday;
+//     servertime = DateTimeET.hour;
+//     hoursOfOperation();
+//     return false;
+//    });
 
 
 
