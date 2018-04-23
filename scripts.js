@@ -1,6 +1,6 @@
-$(document).ready(function(){
-    Date.toTZString();
-  });
+// $(document).ready(function(){
+//     Date.toTZString();
+//   });
 
 //Variables and arrays for hoursOfOperation() function
 
@@ -65,6 +65,9 @@ var date = Date.toTZString(st, 'E');
 var servertime = new Date(date).getHours();
 var serverday = new Date(date).getDay();
 
+servertime = 12;
+serverday = 7;
+
 console.log("The ET day is " + serverday + " and the ET hour is " + servertime);
 
 
@@ -85,33 +88,40 @@ if (serverday>0 && serverday<6 && servertime>7 && servertime<17){
         tomorrowChatHours();
     }
 
-    if (serverday>0 && serverday<6 && servertime>6 && servertime<19){
+if (serverday>0 && serverday<6 && servertime>6 && servertime<19){
         phoneOpen();
         todayPhoneHours();
+        console.log("Option 1");
     }
     else if (serverday>0 && serverday<6 && servertime<=6){
         phoneClosed();
         todayPhoneHours();
+        console.log("Option 2");
     }
     else if (serverday>0 && serverday<6 && servertime>=19){
         phoneClosed();
         tomorrowPhoneHours();
+        console.log("Option 3");
     }
     else if (serverday===6){
         phoneClosed();
         tomorrowPhoneHours();
+        console.log("Option 4");
     }
-    else if (serverday===7 && servertime>1 && servertime<19){
+    else if (serverday===7 && servertime>13 && servertime<19){
         phoneOpen();
         todayPhoneHours();
+        console.log("Option 5");
     }
-    else if (serverday===7 && servertime<=1){
+    else if (serverday===7 && servertime<=13){
         phoneClosed();
         todayPhoneHours();
+        console.log("Option 6");
     }
     else{
         phoneClosed();
         tomorrowPhoneHours();
+        console.log("Option 7");
     }
 
 // //DISPLAY TODAY OR TOMORROW HOURS USING LUXON TIMEZONE (NOT COMPATIBLE WITH IE)
