@@ -79,11 +79,11 @@ function hoursOfOperation(){
         phoneClosed();
         tomorrowPhoneHours();
     }
-    else if (dayET===7 && hourET>1 && hourET<19){
+    else if (dayET===7 && hourET>13 && hourET<19){
         phoneOpen();
         todayPhoneHours();
     }
-    else if (dayET===7 && hourET<=1){
+    else if (dayET===7 && hourET<=13){
         phoneClosed();
         todayPhoneHours();
     }
