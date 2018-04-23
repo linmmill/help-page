@@ -65,8 +65,9 @@ var date = Date.toTZString(st, 'E');
 var servertime = new Date(date).getHours();
 var serverday = new Date(date).getDay();
 
-servertime = 12;
-serverday = 7;
+//Test
+// servertime = 12;
+// serverday = 7;
 
 console.log("The ET day is " + serverday + " and the ET hour is " + servertime);
 
