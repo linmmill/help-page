@@ -146,3 +146,17 @@ h3{
 .phone-today-tomo, .chat-today-tomo{
     font-weight:bold;
 }
+
+
+.view-hours{
+    font-size:1.375em;
+}
+
+@media (max-width: 991px) {
+    .text-md-center { text-align: center; }
+}
+
+.view-hours a{
+    color: #0075bc;
+    text-decoration: underline;
+}
