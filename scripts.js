@@ -1,6 +1,6 @@
-// $(document).ready(function(){
-//     Date.toTZString();
-//   });
+$(document).ready(function(){
+    Date.toTZString();
+  });
 
 //Variables and arrays for hoursOfOperation() function
 
@@ -9,7 +9,7 @@ const chatHours = ["8am-5pm ET","8am-5pm ET","8am-5pm ET","8am-5pm ET","8am-5pm 
 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
 
-//DETERMINE OPEN/CLOSED STATUS BASED ON UTC > SERVER TIME (COMPATIBLE WITH IE)
+//DETERMINE Open/Closed STATUS BASED ON UTC > SERVER TIME (COMPATIBLE WITH IE)
 
 Date.toTZString= function(d, tzp) {
 	var short_months= ['January', 'February', 'March', 'April', 'May','June', 'July','August', 'September', 'October', 'November', 'December'];
@@ -65,9 +65,9 @@ var date = Date.toTZString(st, 'E');
 var servertime = new Date(date).getHours();
 var serverday = new Date(date).getDay();
 
-//Test
-// servertime = 12;
-// serverday = 7;
+// Test
+// servertime = 19;
+// serverday = 4;
 
 console.log("The ET day is " + serverday + " and the ET hour is " + servertime);
 
@@ -220,28 +220,28 @@ function tomorrowChatHours(){
 //Updates css based on open/closed status from logic above
 
 function phoneClosed(){
-    phoneStatus="CLOSED";
+    phoneStatus="Closed";
     document.getElementById("phoneStatus").innerHTML=phoneStatus;
     $( "#phone-btn" ).addClass( "btn-closed" );
     $( "#phoneStatus" ).addClass( "btn-status-closed" );
 };
 
 function phoneOpen(){
-    phoneStatus="OPEN";
+    phoneStatus="Open";
     document.getElementById("phoneStatus").innerHTML=phoneStatus;
     $( "#phone-btn" ).addClass( "btn-open" );
     $( "#phoneStatus" ).addClass( "btn-status-open" );
 };
 
 function chatOpen(){
-    chatStatus="OPEN";
+    chatStatus="Open";
     document.getElementById("chatStatus").innerHTML=chatStatus;
     $( "#chat-btn" ).addClass( "btn-open" );
     $( "#chatStatus" ).addClass( "btn-status-open" );
 };
 
 function chatClosed(){
-    chatStatus="CLOSED";
+    chatStatus="Closed";
     document.getElementById("chatStatus").innerHTML=chatStatus;
     $( "#chat-btn" ).addClass( "btn-closed" );
     $( "#chatStatus" ).addClass( "btn-status-closed" );
@@ -250,28 +250,28 @@ function chatClosed(){
 
 
 function phoneClosed(){
-    phoneStatus="CLOSED";
+    phoneStatus="Closed";
     document.getElementById("phoneStatus").innerHTML=phoneStatus;
     $( "#phone-btn" ).addClass( "btn-closed" );
     $( "#phoneStatus" ).addClass( "btn-status-closed" );
 };
 
 function phoneOpen(){
-    phoneStatus="OPEN";
+    phoneStatus="Open";
     document.getElementById("phoneStatus").innerHTML=phoneStatus;
     $( "#phone-btn" ).addClass( "btn-open" );
     $( "#phoneStatus" ).addClass( "btn-status-open" );
 };
 
 function chatOpen(){
-    chatStatus="OPEN";
+    chatStatus="Open";
     document.getElementById("chatStatus").innerHTML=chatStatus;
     $( "#chat-btn" ).addClass( "btn-open" );
     $( "#chatStatus" ).addClass( "btn-status-open" );
 };
 
 function chatClosed(){
-    chatStatus="CLOSED";
+    chatStatus="Closed";
     document.getElementById("chatStatus").innerHTML=chatStatus;
     $( "#chat-btn" ).addClass( "btn-closed" );
     $( "#chatStatus" ).addClass( "btn-status-closed" );

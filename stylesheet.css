@@ -70,7 +70,7 @@ h3{
     background-color:white;
     color:#00274c;
     border-radius:0.625em;
-    border: none;
+    border: 2px solid white;
     transition: all 0.2s ease 0s;
 }
 
@@ -78,10 +78,9 @@ h3{
     font-size:1.25em;
 }
 
-.btn-1:hover {
-    color: #fff;
-    background-color: #286090;
-    border-color: #204d74;
+.btn-1:hover, .btn-1:focus {
+    background-color: #fcf2e1;
+    border: 2px solid #204d74;
 }
 
 
@@ -95,7 +94,7 @@ h3{
     background-color:white;
     color:#00274c;
     border-radius:0.625em;
-    border: none;
+    border: 2px solid white;
     transition: all 0.2s ease 0s;
     padding-top:2.5rem;
 }
@@ -105,10 +104,9 @@ h3{
     font-size:1em;
 }
 
-.btn-2:hover {
-    color: #fff;
-    background-color: #286090;
-    border-color: #204d74;
+.btn-2:hover, .btn-2:focus {
+    background-color: #fcf2e1;
+    border: 2px solid #204d74;
 }
 
 .btn-closed .btn-title{
@@ -137,6 +135,8 @@ h3{
     font-size: 1em;
 }
 
+
+
   @media (max-width: 767px){
     .btn-2 .btn-title{
         font-size:1.125em;
@@ -159,4 +159,12 @@ h3{
 .view-hours a{
     color: #0075bc;
     text-decoration: underline;
+}
+
+.dark-text{
+    color:#00274c;
+}
+
+.uppercase{
+    text-transform:uppercase;
 }
