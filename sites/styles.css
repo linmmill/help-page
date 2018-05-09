@@ -7,6 +7,7 @@
     opacity:0.95;
     text-align: center;
     padding: 20px 1% 20px 1%;
+    z-index:1000;
 }
 
 .fixed-footer h2{
@@ -14,6 +15,7 @@
     display:inline;
     font-size:1em;
     color: #00274c;
+    
 }
 
 .fixed-footer p{
@@ -62,15 +64,37 @@
     padding-bottom: 10px;
 }
 
-.badge-new {
-    position: absolute;
-    right:0px;
-    z-index:100;
-    font-size:1em;
-}
-
 .new-tile{
     position:relative;
+    overflow: hidden !important;
+}
+
+
+.new-tile::before,
+.new-tile::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-color: transparent;
+    border-style: solid;
+}
+
+
+.new-tile::after {
+    border-radius: o;
+    border-width: 2em;
+    border-right-color: #e0f1d9;
+    border-top-color: #e0f1d9;
+}
+
+.new-label {
+    z-index: 101;
+    position: absolute;
+    top: 10px;
+    right: 2px;
+    color: #00274c;
+    transform: rotate(45deg);
 }
 
 #banner-icon{
