@@ -1,0 +1,78 @@
+.fixed-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #fad149;
+    opacity:0.95;
+    text-align: center;
+    padding: 20px 1% 20px 1%;
+}
+
+.fixed-footer h2{
+    text-align:left;
+    display:inline;
+    font-size:1em;
+    color: #00274c;
+}
+
+.fixed-footer p{
+    text-align:left;
+    display:inline;
+    font-size:1em;
+    color: #00274c;
+}
+
+.get-help-chat-tab {
+    /* position: fixed; */
+    bottom: 33%;
+    /* right: 0px;
+    display: block;
+    margin: 0;
+    padding: 0;
+    font-family: Roboto,Arial,Helvetica,sans-serif;
+    color: #ffffff;
+    background: #00274c;
+    white-space: nowrap;
+    z-index: 99999;
+    transform-origin: bottom right;
+    -webkit-transform-origin: bottom right;
+    transform: rotate(-90deg) translate(50%);
+    -moz-transform: rotate(-90deg) translate(50%);
+    -webkit-transform: rotate(-90deg) translate(50%);
+    -o-transform: rotate(-90deg) translate(50%);
+    -ms-transform: rotate(-90deg) translate(50%);
+    animation: slideInFromRight 20s ease-out 1.5s 2 forwards;
+    -webkit-animation: slideInFromRight 20s ease-out 1.5s 2 forwards;
+    box-shadow: 0 0 3px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0 0 3px rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.3); */
+}
+
+.windows-only{
+    font-size:0.75em;
+    font-style:italic;
+}
+
+#frontqlwrapper a.ql {
+    padding:35px;
+}
+
+#frontqlwrapper > div:nth-child(9) > a{
+    padding-bottom: 10px;
+}
+
+.badge-new {
+    position: absolute;
+    right:0px;
+    z-index:100;
+    font-size:1em;
+}
+
+.new-tile{
+    position:relative;
+}
+
+#banner-icon{
+    height:50px;
+}
