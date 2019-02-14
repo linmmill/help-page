@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="styles.css" >
+
+    <title>OSC | Dashboard</title>
+  </head>
+  <body>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="#">ITS Online Service Center</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="index.html">Dashboard <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="catalog.html">Request Service</a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="cart.html">Cart</a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="admin.html">Admin</a>
+                    </li>
+
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                                <a class="nav-link" href="help.html">Help</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Sally Smith
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">View System Privileges</a>
+                                <a class="dropdown-item" href="#">Log Out</a>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+              </nav>
+
+    <div class="container" role="main">
+            <h1>Dashboard</h1>
+            <div class="row">
+              <div class="col-lg-9">
+                  <div class="col-12">
+
+                        <div class="row bg-light" >
+                                <div class="col-12" id="freq-orders">
+                                    <div class="section-head">
+                                        <h2>Popular Requests</h2>
+                                        <a class="float-right" href="catalog.html">View All Requests</a>
+                                    </div>
+                                        <a class="btn btn-info btn-sm m-1" href="#">Move a phone line</a>
+                                        <a class="btn btn-info btn-sm m-1" href="#">Disconnect a phone line</a>
+                                        <a class="btn btn-info btn-sm m-1" href="#">Add a phone and/or data line</a>
+                                        <a class="btn btn-info btn-sm m-1" href="#">Change phone set, features, or calling range</a>
+                                        <a class="btn btn-info btn-sm m-1" href="#">Order equipment</a>   
+                                </div>
+                            </div>
+
+                        <div class="row bg-light" >
+                            <div class="col-12" id="orders">
+                                <div class="section-head">
+                                    <h2>Recently Submitted Orders</h2>
+                                    <a class="float-right" href="all-orders.html">View All Orders</a>
+                                </div>
+                            <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                        <th scope="col">Order No.</th>
+                                        <th scope="col">Date Submitted </th>
+                                        <th scope="col">Description </th>
+                                        <th scope="col">Submitted By </th>
+                                        <th scope="col">Status </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                        <th scope="row">223</th>
+                                        <td>2/2/2019</td>
+                                        <td>Blah blah blah</td>
+                                        <td>Sally Staff</td>
+                                        <td>Received</td>
+                                        </tr>
+                                        <tr>
+                                        <th scope="row">245</th>
+                                        <td>2/4/2019</td>
+                                        <td>Blah blah blah</td>
+                                        <td>Anna Admin</td>
+                                        <td>In Progress</td>
+                                        </tr>
+                                        <tr>
+                                        <th scope="row">211</th>
+                                        <td>2/1/2019</td>
+                                        <td>Blah blah blah</td>
+                                        <td>Martha Manager</td>
+                                        <td>Submitted</td>
+                                        </tr>
+                                    </tbody>
+                                    </table>
+                            </div>
+                            
+                        </div>
+                  </div>
+            </div>
+
+              <div class="col-lg-3">
+                  <div class="col-md-12">
+                        <div class="row bg-info" id="reports">
+                            <div class="col-12">
+                                    <h2>Reports</h2>
+                                    <button type="button" class="btn btn-light btn-sm btn-block">Summary of Charges</button>
+                                    <button type="button" class="btn btn-light btn-sm btn-block">Toll Statements</button>
+                                    <button type="button" class="btn btn-light btn-sm btn-block">Inventory &amp; Location</button>
+                            </div>   
+                        </div>
+                        <div class="row bg-info" id="related-tools">
+                                <div class="col-12">
+                                        <h2>Tools</h2>
+                                        <button type="button" class="btn btn-light btn-sm btn-block">Cost Estimator</button>
+                                        <button type="button" class="btn btn-light btn-sm btn-block">ChartField Converter</button>
+                                        <button type="button" class="btn btn-light btn-sm btn-block">Rate Change</button>
+                                        <button type="button" class="btn btn-light btn-sm btn-block">VoIP Location</button>
+                                </div>  
+                        </div>
+                  </div>
+                        
+              </div>
+            </div>
+          </div>
+
+    
+
+ 
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+#reports .btn, #related-tools .btn{
+    white-space: normal;
+    font-size: 0.75rem;
+}
+
+#service-menu ul{
+    list-style-type:none;
+    padding:0;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-top: 0.5rem;
+    margin-bottom:1rem;
+}
+
+h1{
+    font-size:1.5rem;
+}
+
+h2{
+    font-size:1.25rem;
+}
+
+.card{
+    display:inline-block;
+}
+
+#freq-orders h2 {
+    display: inline-block;
+
+}
+
+#orders h2 {
+    display: inline-block;
+
+}
+
+
+nav{
+    margin-bottom:2rem;
+}
+
+.row {
+    margin-bottom:15px;
+}
+
+.breadcrumb {
+    border: 1px solid #e9ecef;
+}
+
+.breadcrumb, .form-control{
+    padding:0.5rem 1rem;
+}
+
+#reports, #related-tools {
+    padding-bottom:15px;
+    color:white;
+}
+
+.navbar-dark{
+    background-color:#00274c;
+}
+
+.btn-info{
+    background-color:#567DAA;
+    border: #567DAA;
+}
+
+.btn-info:hover{
+    background-color:rgb(40, 78, 122);
+    border: rgb(40, 78, 122);
+}
+
+.bg-info{
+    background-color: #567DAA !important;
+}
+
+.bg-dark{
+    background-color:#00274c !important;
+}
+
+.card-deck > .card
+{
+    width: 100%;
+    flex-wrap: wrap;
+    flex: initial; 
+}
+
+@media (min-width: 992px){
+
+    .card-deck > .card{
+    width: 45%;
+    flex-wrap: wrap;
+    flex: initial; 
+    }
+}
+
+
+@media (min-width: 1200px){
+    .container {
+        max-width: 1400px;
+    }
+
+    .card-deck > .card{
+    width: 29%;
+    flex-wrap: wrap;
+    flex: initial; 
+    }
+}
