@@ -134,6 +134,10 @@ td i {
     font-weight:bold;
 }
 
-.cart-actions i{
+.transaction-list .list-group-item i{
     margin:0 1rem;
+}
+
+.add-bundle{
+    border: 1px dashed rgba(0,0,0,.125);
 }

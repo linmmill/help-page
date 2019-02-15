@@ -62,18 +62,22 @@
           <h1>Your Cart</h1>
           <div class="row">
               <div class="col-12"> 
-                <p>By default, each request will be submitted as a unique, trackable order. You can change the name of the order and bundle multiple requests into one order by clicking the arrow icon (<i class="fas fa-arrows-alt-v"></i>)</p>
+                <p>By default, each request will be submitted as a unique order. You can bundle requests into orders by dragging and dropping them.</p>
                   <ul class="list-group transaction-list">
                     <li class="list-group-item list-group-item-dark">Departing faculty disconnects - Jan 2019 <button type="button" class="btn btn-link btn-sm float-right">Rename Order</button></li>
-                    <li class="list-group-item">Disconnect phone line 734-555-1234 (555555)
-                      <span class="float-right cart-actions"><a href="#"><i class="fas fa-arrows-alt-v"></i></a><a href="#"><i class="fas fa-edit"></i></a><a href="#"><i class="fas fa-trash-alt"></i></a></span></li>
-                    <li class="list-group-item">Disconnect phone line 734-555-1234 (555111)
-                      <span class="float-right cart-actions"><a href="#"><i class="fas fa-arrows-alt-v"></i></a><a href="#"><i class="fas fa-edit"></i></a><a href="#"><i class="fas fa-trash-alt"></i></a></span></li>
+                    <li class="list-group-item"><i class="fas fa-arrows-alt-v"></i>Disconnect phone line 734-555-1234 (555555)
+                      <span class="float-right cart-actions"><a href="#"><i class="fas fa-edit" title="Edit this request"></i></a><a href="#"><i class="fas fa-trash-alt" title="Discard this request"></i></a></span></li>
+                    <li class="list-group-item"><i class="fas fa-arrows-alt-v"></i>Disconnect phone line 734-555-1234 (555111)
+                      <span class="float-right cart-actions"><a href="#"><i class="fas fa-edit" title="Edit this request"></i></a><a href="#"><i class="fas fa-trash-alt title="Discard this request""></i></a></span></li>
                   </ul>
                   <ul class="list-group transaction-list">
                       <li class="list-group-item list-group-item-dark">OSC Request #111222333 <button type="button" class="btn btn-link btn-sm float-right">Rename Order</button></li>
-                      <li class="list-group-item">Move phone line 734-555-4321 (555555)
-                          <span class="float-right cart-actions"><a href="#"><i class="fas fa-arrows-alt-v"></i></a><a href="#"><i class="fas fa-edit"></i></a><a href="#"><i class="fas fa-trash-alt"></i></a></span>
+                      <li class="list-group-item"><i class="fas fa-arrows-alt-v"></i>  Move phone line 734-555-4321 (555555)
+                          <span class="float-right cart-actions"><a href="#"><i class="fas fa-edit" title="Edit this request"></i></a><a href="#"><i class="fas fa-trash-alt title="Discard this request""></i></a></span>
+                      </li>
+                    </ul>
+                  <ul class="list-group transaction-list">
+                      <li class="list-group-item add-bundle"><i class="fas fa-plus text-success"></i> Create new order bundle
                       </li>
                     </ul>
 
