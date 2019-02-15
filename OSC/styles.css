@@ -107,3 +107,33 @@ nav{
     flex: initial; 
     }
 }
+
+
+.table-bordered{
+    border:3px solid white;
+}
+
+.table-bordered td, .table-bordered th {
+    border: 3px solid white;
+}
+
+td {
+    font-size:0.75rem;
+}
+
+td i {
+    font-size:1rem;
+}
+
+.transaction-list{
+    margin-bottom:1rem;
+}
+
+.transaction-list .list-group-item-dark{
+
+    font-weight:bold;
+}
+
+.cart-actions i{
+    margin:0 1rem;
+}
