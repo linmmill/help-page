@@ -1,0 +1,29 @@
+    <div class="container" role="main">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="jumbotron">
+                        <h1 class="lead"><strong>Welcome to the Online Service Center</strong></h1>
+                        <p class="lead">The Online Service Center is your one-stop-shop for ordering and managing ITS telecommunications and infrastructure products and services like phone lines, phone features, videoconferencing, and more.</p>
+                </div>
+                
+                <!--Show this div if user has an access role-->
+                <div class="alert alert-success" id="osc-users-msg">
+                    <h2 class="lead"><strong>New to the OSC?</strong></h2>
+                    <p>Visit <a href="">Getting Started</a> to learn how to use the OSC. </p>
+                </div>
+
+                <!--Show this div if user does not have an access role-->
+                <div class="alert alert-danger" id="non-user-msg">
+                    <h2 class="lead"><strong>You have limited access to this system.</strong></h2>
+                    <p>Based on your current access levels, you will only be able to browse services and view a limited set of reports. To gain additional permissions, contact your Department Manager. </p>
+                    <p><a href="">Look up your Department Manager <i class="fas fa-chevron-right"></i></a></p>
+                </div>
+            </div>
+            <div class="col-lg-4" id="bulletins">
+                <h2>System Notices</h2>
+                <div class="alert alert-primary">Bulletin</div>
+                <div class="alert alert-primary">Bulletin</div>
+                <div class="alert alert-primary">Bulletin</div>
+            </div>
+        </div>
+    </div>
