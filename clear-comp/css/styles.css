@@ -19,8 +19,8 @@
 .contact-info{
     font-size:1.5rem;
     color: var(--light-blue);
-    overflow-wrap: break-word;
 }
+
 
 #mainNav {
     background-color: #ffffff;
