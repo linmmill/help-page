@@ -173,10 +173,14 @@ a:hover{
         font-family: 'Merriweather', serif;
     }
 
+
+
+}
+
+@media (min-width: 576px) {
     .team-member-bio{
         text-align:left;
         padding-bottom:0;
     }
 
 }
-
