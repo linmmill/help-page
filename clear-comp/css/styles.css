@@ -5,6 +5,14 @@
     --highlight: #FF9900;
   }
 
+a{
+    color:var(--highlight);
+}
+
+a:hover{
+    color:var(--main-blue);
+}
+
 .btn-primary {
     background-color: var(--main-blue);
     border-color: var(--main-blue);
@@ -79,7 +87,7 @@ header.masthead {
     background-size: cover;
 }
 
-primary:focus, .btn-primary:hover {
+.btn-primary:focus, .btn-primary:hover {
     background-color: var(--highlight)!important;
     border-color: var(--highlight)!important;
 }
@@ -123,8 +131,12 @@ p{
     font-family: 'Merriweather', serif;
 }
 
-a:hover{
+#contact a:hover{
     color:var(--highlight);
+}
+
+ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons li a:hover {
+    background-color: var(--highlight);
 }
 
 @media (min-width: 992px) {
